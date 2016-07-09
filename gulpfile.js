@@ -19,22 +19,18 @@ gulp.task("copyIndex", function() {
    .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('reload', function () {
-	browserSync.reload();
-});
-
 gulp.task('watch', function () {
-
-	gulp.watch([
-		'./dist/bundle.js',
-		'./dist/index.html'
-	]).on('change', function (file) {
-		browserSync.reload();
-	});
 
 	gulp.watch('./app/**/*.js', ['webpack']);
 	gulp.watch('./app/index.html', ['copyIndex']);
 	gulp.watch('./src/sass/**/*.scss', ['sass']);
+
+	gulp.watch([
+		'./dist/bundle.js',
+		'./dist/index.html'
+	]).on('change', function () {
+		browserSync.reload();
+	});
 
 });
 
