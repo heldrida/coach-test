@@ -6,6 +6,8 @@ var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var plumber = require('gulp-plumber');
 var rename = require("gulp-rename");
+var jasmine = require('gulp-jasmine');
+var KarmaServer = require('karma').Server;
 
 gulp.task("webpack", function() {
     return gulp.src('./app/app.js')
@@ -21,6 +23,7 @@ gulp.task("copyIndex", function() {
 
 gulp.task('watch', function () {
 
+	gulp.watch('./app/**/*.js', ['testRunner']);
 	gulp.watch('./app/**/*.js', ['webpack']);
 	gulp.watch('./app/index.html', ['copyIndex']);
 	gulp.watch('./src/sass/**/*.scss', ['sass']);
@@ -41,6 +44,13 @@ gulp.task('sass', function () {
            .pipe(sass())
            .pipe(gulp.dest('./dist/css'))
            .pipe(browserSync.stream());
+});
+
+gulp.task('testRunner', function (done) {
+  new KarmaServer({
+    configFile: __dirname +  '/karma.conf.js',
+    singleRun: true
+  }, done).start();
 });
 
 gulp.task('serve', ['watch'], function () {
