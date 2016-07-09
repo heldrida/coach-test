@@ -32,7 +32,6 @@ gulp.task('watch', function () {
 		browserSync.reload();
 	});
 
-	gulp.watch('./app/**/*.js', ['testRunner']);
 	gulp.watch('./app/**/*.js', ['webpack']);
 	gulp.watch('./app/index.html', ['copyIndex']);
 	gulp.watch('./src/sass/**/*.scss', ['sass']);
