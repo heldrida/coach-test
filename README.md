@@ -10,7 +10,7 @@ Dependencies:
 Generate Google Maps Api Key:
 https://developers.google.com/maps/documentation/javascript/get-api-key
 
-Create the api_keys.js and edit pasting the GMap Api Key.
+Create the api_keys.js (use the api_keys.example.js as an example) and edit pasting the GMap Api Key.
 
 Global dependencies installation:
 
