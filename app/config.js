@@ -2,7 +2,7 @@ var distance = 3,
 	postcode =  'WC1E%207BL',
 	queryParams = 'postcode=' + postcode + '&distance=' + distance,
 	apiKey = require('../api_keys').google_map_api,
-	callbackName = 'window.app.map.initMap';
+	callbackName = '';
 
 module.exports = {
 	api: 'https://data.gov.uk/data/api/service/transport/naptan_coach_stations/postcode?' + queryParams,
