@@ -18,7 +18,7 @@ describe("The Google Maps Ajax request", function() {
 		jasmine.Ajax.uninstall();
 	});
 
-    it("specifying response when you need it", function() {
+    it("checks for the url that is called", function() {
 
 		var callback = jasmine.createSpy("success");
 
