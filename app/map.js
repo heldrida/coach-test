@@ -1,21 +1,25 @@
 var config = require('./config');
 var helper = require('./helper');
 
-function Map () {
-	this.init();
+function Map (params) {
+	this.init(params);
 }
 
 Map.prototype = {
-	init: function () {
+	init: function (params) {
+		this.loaded = false;
 		this.mapContainer = document.getElementById('myMap');
 
 		this.setVars();
 		this.setEventListeners();
 
-		helper.loadScript(config.googleMapsUrl, function () {
-			console.log('GMap requested!');
-			helper.triggerEvent(this.mapEventInitName);
-		}.bind(this));
+		if(typeof params.autoload !== 'undefined' && params.autoload) {
+			this.load({
+				src: config.googleMapsUrl,
+				onSuccess: this.onSucessHandler.bind(this),
+				onFailure: this.onFailureHandler.bind(this)
+			});
+		}
 
 	},
 
@@ -23,12 +27,28 @@ Map.prototype = {
 
 		this.mapEventInitName = 'init_google_map';
 
-
 	},
 
 	setEventListeners: function () {
 
 		window.addEventListener(this.mapEventInitName, this.initMap.bind(this));
+
+	},
+
+	onSucessHandler: function () {
+		this.loaded = true;
+		helper.triggerEvent(this.mapEventInitName);
+	},
+
+	onFailureHandler: function () {
+		console.log('onFailure callback!');
+	},
+
+	load: function (params) {
+
+		return helper.loadScript(params).then(function () {
+			console.log("loadscript completed!");
+		});
 
 	},
 

@@ -18,7 +18,7 @@ App.prototype = {
 
 	setVars: function () {
 
-		this.map = new MyMap();
+		this.map = new MyMap({ autoload: true });
 		this.list = new List();
 
 	},
