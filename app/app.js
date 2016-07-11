@@ -18,13 +18,14 @@ App.prototype = {
 			console.log('app.js loaded!');
 			helper.triggerEvent(this.mapEventInitName);
 		}.bind(this));
-	
+
 	},
 
 	setVars: function () {
 
 		this.mapEventInitName = 'init_google_map';
 		this.map = new MyMap();
+		this.list = new List();
 
 	},
 
