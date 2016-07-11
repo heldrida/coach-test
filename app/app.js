@@ -1,5 +1,5 @@
-var helper = require('./helper');
 var config = require('./config');
+var helper = require('./helper');
 var MyMap = require('./map');
 var List = require('./list');
 
@@ -14,16 +14,10 @@ App.prototype = {
 		this.setVars();
 		this.setEventListeners();
 
-		helper.loadScript(config.googleMapsUrl, function () {
-			console.log('app.js loaded!');
-			helper.triggerEvent(this.mapEventInitName);
-		}.bind(this));
-
 	},
 
 	setVars: function () {
 
-		this.mapEventInitName = 'init_google_map';
 		this.map = new MyMap();
 		this.list = new List();
 
@@ -31,13 +25,6 @@ App.prototype = {
 
 	setEventListeners: function () {
 
-		window.addEventListener(this.mapEventInitName, this.initGoogleMap.bind(this));
-
-	},
-
-	initGoogleMap: function () {
-
-		this.map.initMap();
 
 	}
 
