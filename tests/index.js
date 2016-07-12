@@ -32,3 +32,25 @@ describe("Google map script generator", function () {
 	});
 
 });
+
+describe("The List object", function () {
+	var list, request;
+	beforeEach(function () {
+		jasmine.Ajax.install();
+		jasmine.Ajax.stubRequest(config.api).andReturn({
+			responseText: [{}]
+		});
+		list = new List({ autoload: true });
+		request = jasmine.Ajax.requests.mostRecent();
+	});
+
+	afterEach(function() {
+		jasmine.Ajax.uninstall();
+	});
+
+	it('should request the Data from the API', function() {
+		expect(request.url).toBe(config.api);
+		expect(request.method).toBe('GET');
+	});
+
+});
