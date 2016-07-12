@@ -22,7 +22,7 @@ List.prototype = {
 	setVars: function (params) {
 
 		this.coachService = params.coachService.getInstance();
-		console.log(this.coachService);
+
 	},
 
 	requestData: function (params) {
@@ -33,19 +33,32 @@ List.prototype = {
 			xhr.open("GET", params.url, true);
 
 			xhr.onreadystatechange = function (ev) {
+
 				if (xhr.readyState === 4) {
+
 					if (xhr.status === 200) {
+
 						var data = xhr.responseText;
+
 						this.coachService.set(data);
+
 						if (typeof params.onSuccessCallback === 'function') {
+
 							params.onSuccess();
 						}
+
 						resolve(xhr.responseText);
+
 					} else {
+
 						if (typeof params.onFailureCallback === 'function') {
+
 							params.onFailure();
+
 						}
+
 						reject(Error(xhr.statusText));
+
 					}
 				}
 			}.bind(this);
