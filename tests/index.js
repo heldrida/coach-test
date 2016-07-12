@@ -3,6 +3,8 @@ var helper = require('../app/helper');
 var App = require('../app/app.js');
 var MyMap = require('../app/map.js');
 var List = require('../app/list.js');
+var coachService = require('../app/coachService');
+var testData = [{"ospoint":{"type":"Point","crs":{"type":"name","properties":{"name":"EPSG27700"}},"coordinates":[527910.0,182032.0]},"nationalcoachcode":"900057378M","name":"Baker Street","latlong":{"type":"Point","crs":{"type":"name","properties":{"name":"EPSG4326"}},"coordinates":[-0.15771316479289943,51.522728429703754]},"distance":1808.643795502,"atcocode":"490000011B"}];
 
 describe("Google map script generator", function () {
 
@@ -42,7 +44,7 @@ describe("The List object", function () {
 		jasmine.Ajax.stubRequest(config.api).andReturn({
 			responseText: [{}]
 		});
-		list = new List({ autoload: true });
+		list = new List({ autoload: true, coachService: coachService });
 		request = jasmine.Ajax.requests.mostRecent();
 	});
 
