@@ -12,8 +12,9 @@ var coachService = (function () {
 				return data;
 			},
 
-			set: function(myData) {
-				data = myData;
+			set: function(res) {
+				var myData = JSON.parse(res);
+				data = myData.result;
 			}
 
 		};
