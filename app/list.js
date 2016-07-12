@@ -1,17 +1,28 @@
+var config = require('./config');
+
 function List (params) {
+	this.setVars(params);
 	this.init(params);
 }
 
 List.prototype = {
 	init: function (params) {
+
 		if (typeof params.autoload !== 'undefined' && params.autoload) {
-			var config = require('./config');
+
 			this.requestData({
 				url: config.api,
 				onSuccess: null,
 				onFailure: null
 			});
 		}
+
+	},
+
+	setVars: function (params) {
+
+		this.coachService = params.coachService.getInstance();
+		console.log(this.coachService);
 	},
 
 	requestData: function (params) {
@@ -24,7 +35,8 @@ List.prototype = {
 			xhr.onreadystatechange = function (ev) {
 				if (xhr.readyState === 4) {
 					if (xhr.status === 200) {
-						console.log(xhr.responseText);
+						var data = xhr.responseText;
+						this.coachService.set(data);
 						if (typeof params.onSuccessCallback === 'function') {
 							params.onSuccess();
 						}
@@ -36,11 +48,11 @@ List.prototype = {
 						reject(Error(xhr.statusText));
 					}
 				}
-			};
+			}.bind(this);
 
 			xhr.send(null);
 
-		});
+		}.bind(this));
 
 		return promise;
 

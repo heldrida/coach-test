@@ -2,6 +2,7 @@ var config = require('./config');
 var helper = require('./helper');
 var MyMap = require('./map');
 var List = require('./list');
+var coachService = require('./coachService');
 
 function App() {
 	this.init();
@@ -19,7 +20,7 @@ App.prototype = {
 	setVars: function () {
 
 		this.map = new MyMap({ autoload: true });
-		this.list = new List({ autoload: true });
+		this.list = new List({ autoload: true, coachService: coachService });
 
 	},
 

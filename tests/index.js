@@ -34,7 +34,9 @@ describe("Google map script generator", function () {
 });
 
 describe("The List object", function () {
+
 	var list, request;
+
 	beforeEach(function () {
 		jasmine.Ajax.install();
 		jasmine.Ajax.stubRequest(config.api).andReturn({
