@@ -91,16 +91,23 @@ List.prototype = {
 
 		var data = this.coachService.get();
 		var listed = [];
+
 		for (var i = 0, c = 0; i <= data.length; i++) {
+
 	 		if (typeof data[i] !== 'undefined') {
+
 		 		var newNode = createEl(data[i].name);
 				this.pureMenuList.appendChild(newNode);
+
+				// todo: count number of occurrences
+				// for any matches, add incremental value to the name
 				listed.push(data[i].name);
+
 	 		}
+
 		}
 
 	},
-
 
 };
 
