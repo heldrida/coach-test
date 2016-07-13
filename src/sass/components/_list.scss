@@ -2,11 +2,24 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	background-color: #fee;
 	width: 25%;
 	height: 100vh;
 	overflow-y: auto;
-	font-family: "Helvetica Neue", Helvetica, sans-serif;
+
+	* {
+		font-family: "Helvetica Neue", Helvetica, sans-serif;
+	}
+
+	.side-menu {
+		padding: 10px;
+	}
+
+	h1 {
+		font-size: 1.2em;
+		letter-spacing: 0.1em;
+		color: #888;
+		margin-bottom: 20px;
+	}
 
 	ol {
 		margin: 0;
@@ -16,6 +29,21 @@
 			counter-increment: step-counter;
 			margin-bottom: 20px;
 			cursor: pointer;
+			@include transition(all 0.3s);
+			a {
+				@include transition(transform 0.3s);
+			}
+			&:hover {
+				opacity: 0.5;
+				background-color: transparent;
+				a {
+					background-color: transparent;
+					@include transform(translateX(10px));
+				}
+				&:before {
+					margin-left: 10px;
+				}
+			}
 			&:before {
 				content: counter(step-counter);
 				font-size: 80%;
@@ -31,6 +59,7 @@
 				margin-top: 2px;
 				top: 50%;
 				@include transform(translateY(-50%));
+				@include transition(margin 0.3s);
 			}
 			a {
 				margin: 0;
