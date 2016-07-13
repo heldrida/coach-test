@@ -12,10 +12,12 @@ List.prototype = {
 
 			this.requestData({
 				url: config.api,
-				onSuccess: null,
+				onSuccess: this.generate.bind(this),
 				onFailure: null
 			});
 		}
+
+		this.pureMenuList = document.querySelector('.pure-menu-list');
 
 	},
 
@@ -42,7 +44,7 @@ List.prototype = {
 
 						this.coachService.set(data);
 
-						if (typeof params.onSuccessCallback === 'function') {
+						if (typeof params.onSuccess === 'function') {
 
 							params.onSuccess();
 						}
@@ -51,7 +53,7 @@ List.prototype = {
 
 					} else {
 
-						if (typeof params.onFailureCallback === 'function') {
+						if (typeof params.onFailure === 'function') {
 
 							params.onFailure();
 
@@ -69,7 +71,36 @@ List.prototype = {
 
 		return promise;
 
-	}
+	},
+
+	generate: function () {
+
+		var createEl = function (name) {
+			
+			var li = document.createElement('li');
+			var a = document.createElement('a');
+			var txt = document.createTextNode(name);
+			a.setAttribute('class', 'pure-menu-link');
+			a.appendChild(txt);
+			li.appendChild(a);
+			li.setAttribute('class', 'pure-menu-item');
+
+			return li;
+
+		};
+
+		var data = this.coachService.get();
+		var listed = [];
+		for (var i = 0, c = 0; i <= data.length; i++) {
+	 		if (typeof data[i] !== 'undefined') {
+		 		var newNode = createEl(data[i].name);
+				this.pureMenuList.appendChild(newNode);
+				listed.push(data[i].name);
+	 		}
+		}
+
+	},
+
 
 };
 
