@@ -59,18 +59,3 @@ describe("The List object", function () {
 	});
 
 });
-
-// describe("The List element generator", function () {
-
-// 	var list;
-
-// 	beforeEach(function () {
-// 		list = new List({ autoload: false, coachService: coachService });
-// 		list.generate(testData);
-// 	});
-
-// 	it('should generate DOM elements', function () {
-// 		expect(document.querySelectorAll('.pure-menu-item').length).toBe(1);
-// 	});
-
-// });
