@@ -26,4 +26,4 @@ Workflow:
 
 * Start the development server: `gulp serve`
 
-* To run tests: gulp testRunner
+* To run tests: `gulp testRunner`
