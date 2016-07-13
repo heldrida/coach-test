@@ -19,13 +19,17 @@ App.prototype = {
 
 	setVars: function () {
 
-		var commonParams = {
+		this.list = new List({
 			autoload: true,
 			coachService: coachService
-		};
-		
-		this.map = new MyMap(commonParams);
-		this.list = new List(commonParams);
+		}).then(function () {
+			
+			this.map = new MyMap({
+				autoload: true,
+				coachService: coachService
+			});
+
+		}.bind(this));
 
 	},
 

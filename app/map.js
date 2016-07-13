@@ -2,11 +2,15 @@ var config = require('./config');
 var helper = require('./helper');
 
 function Map (params) {
+	this.params = params;
 	this.init(params);
 }
 
 Map.prototype = {
 	init: function (params) {
+		
+		this.map;
+
 		this.loaded = false;
 		this.mapContainer = document.getElementById('myMap');
 
@@ -46,17 +50,34 @@ Map.prototype = {
 
 	load: function (params) {
 
-		return helper.loadScript(params).then(function () {
-			console.log("loadscript completed!");
-		});
+		return helper.loadScript(params);
 
 	},
 
 	initMap: function () {
-		map = new google.maps.Map(this.mapContainer, {
+		this.map = new google.maps.Map(this.mapContainer, {
 			center: {lat: -34.397, lng: 150.644},
 			zoom: 8
 		});
+		// place markers
+		var c = this.params.coachService.getInstance();
+		var data = c.get();
+		this.placeMarkers(data);
+	},
+
+	placeMarkers: function (data) {
+
+		for (var i = 0; i <= data.length; i++) {
+			if (typeof data[i] !== 'undefined') {
+				var myLatLng = {lat: data[i]['latlong']['coordinates'][1], lng: data[i]['latlong']['coordinates'][0] };
+				var marker = new google.maps.Marker({
+					position: myLatLng,
+					map: this.map,
+					title: data[i].name
+				});
+			}
+		}
+
 	}
 
 };

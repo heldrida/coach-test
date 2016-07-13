@@ -2,7 +2,8 @@ var config = require('./config');
 
 function List (params) {
 	this.setVars(params);
-	this.init(params);
+	var promise = this.init(params);
+	return promise;
 }
 
 List.prototype = {
@@ -10,7 +11,7 @@ List.prototype = {
 
 		if (typeof params.autoload !== 'undefined' && params.autoload) {
 
-			this.requestData({
+			return this.requestData({
 				url: config.api,
 				onSuccess: function () {
 					var data = this.coachService.get();
@@ -99,7 +100,7 @@ List.prototype = {
 	 		if (typeof data[i] !== 'undefined') {
 
 		 		var newNode = createEl(data[i].name);
-				this.pureMenuList.appendChild(newNode);
+				document.querySelector('.pure-menu-list').appendChild(newNode);
 
 				// todo: count number of occurrences
 				// for any matches, add incremental value to the name
