@@ -1,6 +1,7 @@
 var coachService = (function () {
 
 	var instance;
+	var markersByCode = {};
 
 	function init() {
 
@@ -15,6 +16,14 @@ var coachService = (function () {
 			set: function(res) {
 				var myData = JSON.parse(res);
 				data = myData.result;
+			},
+
+			getMarkersByCode: function () {
+				return markersByCode;
+			},
+
+			setMarkerByCode: function (code, marker) {
+				markersByCode[code] = marker;
 			}
 
 		};

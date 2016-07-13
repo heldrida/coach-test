@@ -11,6 +11,7 @@ Map.prototype = {
 		
 		this.map;
 		this.markers = [];
+		this.coachService = params.coachService.getInstance();
 
 		this.loaded = false;
 		this.mapContainer = document.getElementById('myMap');
@@ -77,6 +78,7 @@ Map.prototype = {
 					title: data[i].name
 				});
 				this.markers.push(marker);
+				this.coachService.setMarkerByCode(data[i].nationalcoachcode, marker);
 			}
 		}
 
