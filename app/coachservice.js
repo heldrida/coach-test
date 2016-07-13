@@ -22,6 +22,12 @@ var coachService = (function () {
 				return markersByCode;
 			},
 
+			getMarkerByCode: function (code) {
+				console.log(markersByCode);
+				console.log('code', code);
+				return typeof markersByCode[code] !== 'undefined' ? markersByCode[code] : false;
+			},
+
 			setMarkerByCode: function (code, marker) {
 				markersByCode[code] = marker;
 			}

@@ -68,18 +68,36 @@ Map.prototype = {
 	},
 
 	placeMarkers: function (data) {
-
+		var infowindow = new google.maps.InfoWindow({
+			content: ''
+		});
 		for (var i = 0; i <= data.length; i++) {
+
 			if (typeof data[i] !== 'undefined') {
+
+	 			var busName = data[i].nationalcoachcode.slice(-3) + ' ' + data[i].name;
 				var myLatLng = {lat: data[i]['latlong']['coordinates'][1], lng: data[i]['latlong']['coordinates'][0] };
 				var marker = new google.maps.Marker({
 					position: myLatLng,
 					map: this.map,
-					title: data[i].name
+					title: busName
 				});
+
+				// show info window on click for highlight
+				(function (map, marker, busName) {
+					marker.addListener('click', function () {
+						map.setZoom(16);
+						map.panTo(marker.position);
+						infowindow.setContent('<div class="infowindow"><span>Coach:</span> ' + busName + '</div>');
+						infowindow.open(map, marker);
+					});
+				}(this.map, marker, busName));
+
 				this.markers.push(marker);
 				this.coachService.setMarkerByCode(data[i].nationalcoachcode, marker);
+
 			}
+
 		}
 
 		this.map.setZoom(12);
