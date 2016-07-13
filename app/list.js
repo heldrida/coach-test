@@ -95,7 +95,7 @@ List.prototype = {
 		var listed = [];
 
 		for (var i = 0, c = 0; i <= data.length; i++) {
-
+			console.log(data[i]);
 	 		if (typeof data[i] !== 'undefined') {
 
 		 		var newNode = createEl(data[i].name);
