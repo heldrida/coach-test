@@ -10,6 +10,7 @@ Map.prototype = {
 	init: function (params) {
 		
 		this.map;
+		this.markers = [];
 
 		this.loaded = false;
 		this.mapContainer = document.getElementById('myMap');
@@ -75,9 +76,12 @@ Map.prototype = {
 					map: this.map,
 					title: data[i].name
 				});
+				this.markers.push(marker);
 			}
 		}
 
+		this.map.setZoom(12);
+		this.map.setCenter(this.markers[this.markers.length - 1].getPosition());
 	}
 
 };
