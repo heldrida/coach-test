@@ -12,7 +12,10 @@ List.prototype = {
 
 			this.requestData({
 				url: config.api,
-				onSuccess: this.generate.bind(this),
+				onSuccess: function () {
+					var data = this.coachService.get();
+					this.generate(data);
+				}.bind(this),
 				onFailure: null
 			});
 		}
@@ -73,7 +76,7 @@ List.prototype = {
 
 	},
 
-	generate: function () {
+	generate: function (data) {
 
 		var createEl = function (name) {
 			
@@ -89,7 +92,6 @@ List.prototype = {
 
 		};
 
-		var data = this.coachService.get();
 		var listed = [];
 
 		for (var i = 0, c = 0; i <= data.length; i++) {
