@@ -6,4 +6,38 @@
 	width: 25%;
 	height: 100vh;
 	overflow-y: auto;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+
+	ol {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		li {
+			counter-increment: step-counter;
+			margin-bottom: 20px;
+			cursor: pointer;
+			&:before {
+				content: counter(step-counter);
+				font-size: 80%;
+				background-color: #fc0;
+				color: white;
+				font-weight: bold;
+				width: 20px;
+				height: 20px;
+				line-height: 20px;
+				text-align: center;
+				border-radius: 10px;
+				position: absolute;
+				margin-top: 2px;
+				top: 50%;
+				@include transform(translateY(-50%));
+			}
+			a {
+				margin: 0;
+				padding: 0;
+				margin-left: 25px;
+				font-size: 12px;
+			}
+		}
+	}
 }
