@@ -9,7 +9,7 @@ var testData = [{"ospoint":{"type":"Point","crs":{"type":"name","properties":{"n
 describe("Google map script generator", function () {
 
 	var onSuccess, onFailure, request;
-	var myMap = new MyMap({ autoload: false });
+	var myMap = new MyMap({ autoload: false, coachService: coachService });
 
 	beforeEach(function() {
 		spyOn(myMap, "load").and.callFake(function () {

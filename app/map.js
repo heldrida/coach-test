@@ -100,8 +100,8 @@ Map.prototype = {
 
 		}
 
-		this.map.setZoom(12);
-		this.map.setCenter(this.markers[this.markers.length - 1].getPosition());
+		this.map.setZoom(13);
+		this.map.setCenter(this.markers[0].getPosition());
 	}
 
 };

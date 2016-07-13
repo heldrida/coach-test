@@ -100,19 +100,19 @@ List.prototype = {
 		});
 
 		for (var i = 0, c = 0; i <= data.length; i++) {
-			console.log(data[i]);
+
 	 		if (typeof data[i] !== 'undefined') {
 	 			var coachcode = data[i].nationalcoachcode;
 	 			var busName = data[i].nationalcoachcode.slice(-3) + ' ' + data[i].name;
 		 		var newNode = createEl(busName);
+
 		 		newNode.addEventListener('click', function (coachcode) {
 		 			var marker = this.coachService.getMarkerByCode(coachcode);
 					new google.maps.event.trigger( marker, 'click' );
 		 		}.bind(this, coachcode));
+
 				document.querySelector('.pure-menu-list').appendChild(newNode);
 
-				// todo: count number of occurrences
-				// for any matches, add incremental value to the name
 				listed.push(busName);
 
 	 		}
