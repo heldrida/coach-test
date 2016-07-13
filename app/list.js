@@ -96,15 +96,15 @@ List.prototype = {
 		var listed = [];
 
 		for (var i = 0, c = 0; i <= data.length; i++) {
-			console.log(data[i]);
-	 		if (typeof data[i] !== 'undefined') {
 
-		 		var newNode = createEl(data[i].name);
+	 		if (typeof data[i] !== 'undefined') {
+	 			var busName = data[i].nationalcoachcode.slice(-3) + ' ' + data[i].name;
+		 		var newNode = createEl(busName);
 				document.querySelector('.pure-menu-list').appendChild(newNode);
 
 				// todo: count number of occurrences
 				// for any matches, add incremental value to the name
-				listed.push(data[i].name);
+				listed.push(busName);
 
 	 		}
 
