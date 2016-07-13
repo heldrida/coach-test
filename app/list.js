@@ -92,11 +92,16 @@ List.prototype = {
 			return li;
 
 		};
-
+		
 		var listed = [];
 
-		for (var i = 0, c = 0; i <= data.length; i++) {
+		// order by distance
+		data.sort(function(a, b) {
+			return a.distance > b.distance;
+		});
 
+		for (var i = 0, c = 0; i <= data.length; i++) {
+			console.log(data[i]);
 	 		if (typeof data[i] !== 'undefined') {
 	 			var busName = data[i].nationalcoachcode.slice(-3) + ' ' + data[i].name;
 		 		var newNode = createEl(busName);
