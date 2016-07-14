@@ -1962,3 +1962,7 @@ table {
   .infowindow span {
     font-weight: bold;
     color: #fc0; }
+  .infowindow.imagination {
+    font-weight: bold;
+    color: #000;
+    font-size: 1.6em; }

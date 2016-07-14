@@ -265,7 +265,9 @@
 		},
 
 		placeImaginationMarker: function () {
-
+			var infowindow = new google.maps.InfoWindow({
+				content: ''
+			});
 			var myLatLng = { lat: 51.5192201, lng: -0.1318654 };
 			var marker = new google.maps.Marker({
 				position: myLatLng,
@@ -273,12 +275,12 @@
 				title: 'Imagination',
 				icon: 'images/icon-black.png'
 			});
-			// marker.addListener('click', function () {
-			// 	this.map.setZoom(16);
-			// 	this.map.panTo(marker.position);
-			// 	infowindow.setContent('<div class="infowindow"><span>Coach:</span> Imagination</div>');
-			// 	infowindow.open(this.map, marker);
-			// }.bind(this));
+			marker.addListener('click', function () {
+				this.map.setZoom(16);
+				this.map.panTo(marker.position);
+				infowindow.setContent('<div class="infowindow imagination">Imagination</div>');
+				infowindow.open(this.map, marker);
+			}.bind(this));
 		}
 
 	};
