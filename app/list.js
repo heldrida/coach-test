@@ -34,10 +34,13 @@ List.prototype = {
 
 	setEventListeners: function () {
 
- 		this.imagination.addEventListener('click', function () {
- 			var marker = this.coachService.getMarkerByCode('imagination');
-			new google.maps.event.trigger(marker, 'click');
- 		}.bind(this));
+		if (typeof this.imagination !== 'undefined' && this.imagination) {
+			console.log("this.imagination", this.imagination);
+			this.imagination.addEventListener('click', function () {
+				var marker = this.coachService.getMarkerByCode('imagination');
+				new google.maps.event.trigger(marker, 'click');
+			}.bind(this));
+		}
 
 	},
 

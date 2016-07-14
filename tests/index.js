@@ -1,6 +1,5 @@
 var config = require('../app/config.js');
 var helper = require('../app/helper');
-var App = require('../app/app.js');
 var MyMap = require('../app/map.js');
 var List = require('../app/list.js');
 var coachService = require('../app/coachService');
