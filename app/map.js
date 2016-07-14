@@ -65,6 +65,7 @@ Map.prototype = {
 		var c = this.params.coachService.getInstance();
 		var data = c.get();
 		this.placeMarkers(data);
+		this.placeImaginationMarker();
 	},
 
 	placeMarkers: function (data) {
@@ -80,7 +81,8 @@ Map.prototype = {
 				var marker = new google.maps.Marker({
 					position: myLatLng,
 					map: this.map,
-					title: busName
+					title: busName,
+					icon: 'images/icon-coaches.png'
 				});
 
 				// show info window on click for highlight
@@ -102,6 +104,23 @@ Map.prototype = {
 
 		this.map.setZoom(13);
 		this.map.setCenter(this.markers[0].getPosition());
+	},
+
+	placeImaginationMarker: function () {
+
+		var myLatLng = { lat: 51.5192201, lng: -0.1318654 };
+		var marker = new google.maps.Marker({
+			position: myLatLng,
+			map: this.map,
+			title: 'Imagination',
+			icon: 'images/icon-black.png'
+		});
+		// marker.addListener('click', function () {
+		// 	this.map.setZoom(16);
+		// 	this.map.panTo(marker.position);
+		// 	infowindow.setContent('<div class="infowindow"><span>Coach:</span> Imagination</div>');
+		// 	infowindow.open(this.map, marker);
+		// }.bind(this));
 	}
 
 };
