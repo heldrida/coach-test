@@ -65,6 +65,10 @@ describe("Coach service", function () {
 	beforeEach(function () {
 		cs = coachService.getInstance();
 	});
+	it("there's only one instance", function () {
+		var cs_b = coachService.getInstance();
+		expect(cs).toEqual(cs_b);
+	});
 	it("the api datas etter should json parse and validate the key", function () {
 	    expect(cs.set('{"success":true,"result":[]}')).toBe(true);
 	});
