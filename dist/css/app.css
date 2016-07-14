@@ -1869,13 +1869,15 @@ table {
   position: fixed;
   top: 0;
   left: 0;
-  width: 25%;
+  width: 35%;
   height: 100vh;
   overflow-y: auto; }
   .list * {
     font-family: "Helvetica Neue", Helvetica, sans-serif; }
   .list .side-menu {
-    padding: 10px; }
+    padding: 30px 30px; }
+    .list .side-menu ol {
+      margin-top: 30px; }
   .list h1 {
     font-size: 1em;
     letter-spacing: 0.1em;
@@ -1886,14 +1888,20 @@ table {
       font-weight: bold;
       font-style: italic;
       cursor: pointer;
-      -webkit-transition: opacity 0.3s;
-      -khtml-transition: opacity 0.3s;
-      -moz-transition: opacity 0.3s;
-      -ms-transition: opacity 0.3s;
-      -o-transition: opacity 0.3s;
-      transition: opacity 0.3s; }
+      display: inline-block;
+      background-color: #000;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 3px;
+      -webkit-transition: all 0.3s;
+      -khtml-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s; }
       .list h1 span:hover {
-        opacity: 0.5; }
+        background-color: #fc0;
+        color: #000; }
     .list h1:after {
       content: " ";
       border-bottom: 1px solid #000;
@@ -1906,7 +1914,7 @@ table {
     list-style-type: none; }
     .list ol li {
       counter-increment: step-counter;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       cursor: pointer;
       -webkit-transition: all 0.3s;
       -khtml-transition: all 0.3s;
@@ -1968,8 +1976,8 @@ table {
         font-size: 12px; }
 
 .map {
-  margin-left: 25%;
-  width: calc(100vw - 25%);
+  margin-left: 35%;
+  width: calc(100vw - 35%);
   height: 100vh;
   background-color: #eee; }
 
