@@ -59,3 +59,17 @@ describe("The List object", function () {
 	});
 
 });
+
+describe("Coach service", function () {
+	var cs;
+	beforeEach(function () {
+		cs = coachService.getInstance();
+	});
+	it("should set a coachnumber to a unique marker", function () {
+		expect(cs.setMarkerByCode(909, {})).toBe(true);
+		expect(cs.setMarkerByCode(909, {})).not.toBe(true);
+	});
+	it("the getter should return an object", function () {
+		expect(cs.getMarkerByCode(909)).toEqual({});
+	});
+});
