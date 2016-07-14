@@ -39,6 +39,10 @@ describe("The List object", function () {
 	var list, request;
 
 	beforeEach(function () {
+		
+		var fixture = '<span class="imagination"></span>';
+		document.body.insertAdjacentHTML('afterbegin', fixture);
+
 		jasmine.Ajax.install();
 		jasmine.Ajax.stubRequest(config.api).andReturn({
 			responseText: [{}]
@@ -50,6 +54,7 @@ describe("The List object", function () {
 
 	afterEach(function() {
 		jasmine.Ajax.uninstall();
+		document.body.removeChild(document.querySelector('.imagination'));
 	});
 
 	it('should request the Data from the API', function() {
