@@ -14,8 +14,13 @@ var coachService = (function () {
 			},
 
 			set: function(res) {
+				var status = false;
 				var myData = JSON.parse(res);
-				data = myData.result;
+				if (typeof myData.result !== 'undefined') {
+					data = myData.result;
+					status = true;
+				}
+				return status;
 			},
 
 			getMarkersByCode: function () {

@@ -65,11 +65,17 @@ describe("Coach service", function () {
 	beforeEach(function () {
 		cs = coachService.getInstance();
 	});
-	it("should set a coachnumber to a unique marker", function () {
+	it("the api datas etter should json parse and validate the key", function () {
+	    expect(cs.set('{"success":true,"result":[]}')).toBe(true);
+	});
+	it("the api data getter should return an object", function () {
+	    expect(cs.get()).toEqual(jasmine.any(Object));
+	});
+	it("the marker setter should set a coachnumber to a unique marker", function () {
 		expect(cs.setMarkerByCode(909, {})).toBe(true);
 		expect(cs.setMarkerByCode(909, {})).not.toBe(true);
 	});
-	it("the getter should return an object", function () {
+	it("the marker getter should return an object", function () {
 		expect(cs.getMarkerByCode(909)).toEqual({});
 	});
 });
