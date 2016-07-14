@@ -123,6 +123,7 @@ Map.prototype = {
 			infowindow.setContent('<div class="infowindow imagination">Imagination</div>');
 			infowindow.open(this.map, marker);
 		}.bind(this));
+		this.coachService.setMarkerByCode('imagination', marker);
 	}
 
 };

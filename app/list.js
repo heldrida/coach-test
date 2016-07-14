@@ -2,6 +2,7 @@ var config = require('./config');
 
 function List (params) {
 	this.setVars(params);
+	this.setEventListeners();
 	var promise = this.init(params);
 	return promise;
 }
@@ -26,7 +27,17 @@ List.prototype = {
 
 	setVars: function (params) {
 
+		this.imagination = document.querySelector('.imagination');
 		this.coachService = params.coachService.getInstance();
+
+	},
+
+	setEventListeners: function () {
+
+ 		this.imagination.addEventListener('click', function () {
+ 			var marker = this.coachService.getMarkerByCode('imagination');
+			new google.maps.event.trigger(marker, 'click');
+ 		}.bind(this));
 
 	},
 

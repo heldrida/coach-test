@@ -15,10 +15,27 @@
 	}
 
 	h1 {
-		font-size: 1.2em;
+		font-size: 1em;
 		letter-spacing: 0.1em;
-		color: #888;
+		color: #000;
 		margin-bottom: 20px;
+		display: inline-block;
+		span {
+			font-weight: bold;
+			font-style: italic;
+			cursor: pointer;
+			@include transition(opacity 0.3s);
+			&:hover {
+				opacity: 0.5;
+			}
+		}
+		&:after {
+			content: " ";
+			border-bottom: 1px solid #000;
+			width: 100%;
+			height: auto;
+			display: inline-block;
+		}
 	}
 
 	ol {
@@ -31,6 +48,7 @@
 			cursor: pointer;
 			@include transition(all 0.3s);
 			a {
+				color: #000;
 				@include transition(transform 0.3s);
 			}
 			&:hover {
@@ -56,7 +74,7 @@
 				text-align: center;
 				border-radius: 10px;
 				position: absolute;
-				margin-top: 2px;
+				margin-top: 0px;
 				top: 50%;
 				@include transform(translateY(-50%));
 				@include transition(margin 0.3s);

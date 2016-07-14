@@ -281,6 +281,7 @@
 				infowindow.setContent('<div class="infowindow imagination">Imagination</div>');
 				infowindow.open(this.map, marker);
 			}.bind(this));
+			this.coachService.setMarkerByCode('imagination', marker);
 		}
 
 	};
@@ -295,6 +296,7 @@
 
 	function List (params) {
 		this.setVars(params);
+		this.setEventListeners();
 		var promise = this.init(params);
 		return promise;
 	}
@@ -319,7 +321,17 @@
 
 		setVars: function (params) {
 
+			this.imagination = document.querySelector('.imagination');
 			this.coachService = params.coachService.getInstance();
+
+		},
+
+		setEventListeners: function () {
+
+	 		this.imagination.addEventListener('click', function () {
+	 			var marker = this.coachService.getMarkerByCode('imagination');
+				new google.maps.event.trigger(marker, 'click');
+	 		}.bind(this));
 
 		},
 
